@@ -1,9 +1,19 @@
 import { storiesOf } from '@storybook/angular/dist/client/preview';
 import { moduleMetadata } from '@storybook/angular';
-import { AppModule } from './app.module';
-import { AppComponent } from './app.component';
 import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { AppService } from './app.service';
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    Service active: {{ appService.isActive() }}
+  `,
+})
+export class AppComponent {
+  constructor(public appService: AppService) {}
+}
+
 
 storiesOf('app', module)
   .addDecorator(withKnobs)
@@ -19,7 +29,7 @@ storiesOf('app', module)
 
     return {
       template: `
-        <app-root></app-root>
+        <app-root></app-root><br>
         Prop active: {{ isActive }}
       `,
       props: {
