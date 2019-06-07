@@ -1,8 +1,17 @@
 import { storiesOf } from '@storybook/angular/dist/client/preview';
 import { moduleMetadata } from '@storybook/angular';
 import { boolean, withKnobs } from '@storybook/addon-knobs';
-import { AppService } from './app.service';
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AppService {
+  isActive() {
+    return false;
+  }
+}
+
 
 @Component({
   selector: 'app-root',
